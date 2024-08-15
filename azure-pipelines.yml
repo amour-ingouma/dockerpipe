@@ -7,16 +7,16 @@ trigger:
 
 variables:
   buildConfiguration: 'Release'
-  location: 'westus'
-  acrHostName: 'hubdocker1.azurecr.io'
-  acrName: 'hubdocker1'
+  location: 'eastus'
+  acrHostName: 'hubdocker2.azurecr.io'
+  acrName: 'hubdocker2'
   rgName: 'vmsagents1'
-  containerName: 'hubdocker1'
-  appName: 'dockerhubert'
+  containerName: 'hubdocker2'
+  appName: 'dockerhubert1'
   vmImageName: 'ubuntu-latest'
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
-  appSvcPlanName: 'dockerhubert'
+  appSvcPlanName: 'dockerhubert1'
 
 resources:
 - repo: self
