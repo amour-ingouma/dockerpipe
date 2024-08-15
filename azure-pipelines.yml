@@ -8,15 +8,15 @@ trigger:
 variables:
   buildConfiguration: 'Release'
   location: 'eastus'
-  acrHostName: 'hubdocker1.azurecr.io'
-  acrName: 'dockerhubert1'
+  acrHostName: 'hubdocker.azurecr.io'
+  acrName: 'hubdocker'
   rgName: 'hubdocker1-rg'
-  containerName: 'dockerhubert1'
-  appName: 'hubdocker1'
+  containerName: 'dockerhubert'
+  appName: 'dockerhubert'
   vmImageName: 'ubuntu-latest'
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
-  appSvcPlanName: 'hubdocker1svcplan'
+  appSvcPlanName: 'dockerhubert'
 
 resources:
 - repo: self
