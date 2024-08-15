@@ -8,10 +8,10 @@ trigger:
 variables:
   buildConfiguration: 'Release'
   location: 'eastus'
-  acrHostName: 'hubdocker.azurecr.io'
-  acrName: 'dockerhubert'
+  acrHostName: 'hubdocker1.azurecr.io'
+  acrName: 'dockerhubert1'
   rgName: 'hubdocker1-rg'
-  containerName: 'hubdocker1'
+  containerName: 'dockerhubert1'
   appName: 'hubdocker1'
   vmImageName: 'ubuntu-latest'
   dockerfilePath: '**/Dockerfile'
@@ -33,7 +33,7 @@ stages:
     - task: AzureResourceGroupDeployment@2
       displayName: 'Azure Container Registry Deployment'
       inputs:
-        azureSubscription: 'azureSrvcConn'
+        azureSubscription: 'azureSrvcConn1'
         resourceGroupName: '$(rgName)'
         location: $(location)
         csmFile: '$(System.DefaultWorkingDirectory)/**/acr-temp-new.json'
@@ -42,7 +42,7 @@ stages:
       displayName: 'Build task'
       inputs:
         containerregistrytype: 'Azure Container Registry'
-        azureSubscriptionEndpoint: 'azureSrvcConn'
+        azureSubscriptionEndpoint: 'azureSrvcConn1'
         azureContainerRegistry: '$(acrHostName)'
         command: 'Build an image'
         dockerFile: '**/Dockerfile'
@@ -52,7 +52,7 @@ stages:
       displayName: 'publish task'
       inputs:
         containerregistrytype: 'Azure Container Registry'
-        azureSubscriptionEndpoint: 'azureSrvcConn'
+        azureSubscriptionEndpoint: 'azureSrvcConn1'
         azureContainerRegistry: '$(acrHostName)'
         command: 'Push an image'
         imageName: '$(containerName):$(Build.BuildId)'
@@ -68,7 +68,7 @@ stages:
     - task: AzureResourceGroupDeployment@2
       displayName: 'Azure App Service Deployment'
       inputs:
-        azureSubscription: 'azureSrvcConn'
+        azureSubscription: 'azureSrvcConn1'
         resourceGroupName: '$(rgName)'
         location: '$(location)'
         csmFile: '$(Pipeline.Workspace)/**/app-svc-temp.json'
@@ -76,7 +76,7 @@ stages:
     - task: AzureRmWebAppDeployment@3
       displayName: 'App Svc Deploy'
       inputs:
-        azureSubscription: 'azureSrvcConn'
+        azureSubscription: 'azureSrvcConn1'
         appType: 'applinux'
         WebAppName: '$(appName)'
         DockerNamespace: '$(acrHostName)'
