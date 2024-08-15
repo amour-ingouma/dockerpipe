@@ -9,7 +9,7 @@ variables:
   buildConfiguration: 'Release'
   location: 'eastus'
   acrHostName: 'hubdocker.azurecr.io'
-  acrName: 'hubdocker1'
+  acrName: 'dockerhubert'
   rgName: 'hubdocker1-rg'
   containerName: 'hubdocker1'
   appName: 'hubdocker1'
