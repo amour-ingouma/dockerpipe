@@ -12,11 +12,11 @@ variables:
   acrName: 'hubdocker1'
   rgName: 'vmsagents1'
   containerName: 'hubdocker1'
-  appName: 'dockerhubert1'
+  appName: 'dockerhubert'
   vmImageName: 'ubuntu-latest'
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
-  appSvcPlanName: 'dockerhubert1'
+  appSvcPlanName: 'dockerhubert'
 
 resources:
 - repo: self
